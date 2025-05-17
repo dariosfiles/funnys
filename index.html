@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ts Pmo Land</title>
+
+  <!-- Discord Embed Preview -->
+  <meta property="og:title" content="Nitro">
+  <meta property="og:description" content="Claim now!">
+  <meta property="og:image" content="https://files.catbox.moe/1888lw.png">
+  <meta property="og:url" content="https://tspmo.store"> <!-- CHANGE THIS -->
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+    * {
+      cursor: url('https://files.catbox.moe/5uebbf.cur'), auto !important;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Comic Sans MS', cursive;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #mainContent {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 3rem;
+      background-image: linear-gradient(
+        90deg,
+        red,
+        orange,
+        yellow,
+        green,
+        blue,
+        indigo,
+        violet
+      );
+      background-size: 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 5s linear infinite;
+      margin-top: 20px;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% }
+      100% { background-position: 100% }
+    }
+
+    video {
+      width: 300px;
+      border: 3px solid pink;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    #askButton {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      border: 2px solid black;
+      border-radius: 10px;
+      cursor: pointer;
+      background: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div id="askPermission">
+    <button id="askButton">Click to enter funny site</button>
+  </div>
+
+  <div id="mainContent">
+    <h1>Ts Pmo Land</h1>
+    <video id="prankVideo" src="https://files.catbox.moe/yx5ucl.mp4" loop></video>
+  </div>
+
+  <script>
+    const askDiv = document.getElementById('askPermission');
+    const main = document.getElementById('mainContent');
+    const button = document.getElementById('askButton');
+    const video = document.getElementById('prankVideo');
+
+    button.addEventListener('click', () => {
+      askDiv.style.display = 'none';
+      main.style.display = 'flex';
+      startVideo();
+      startPopups();
+    });
+
+    function startVideo() {
+      video.muted = true;
+      video.play().catch(() => {});
+      document.addEventListener('click', () => {
+        video.muted = false;
+        video.play().catch(() => {});
+      });
+
+      video.addEventListener('pause', () => video.play());
+      video.addEventListener('ended', () => {
+        video.currentTime = 0;
+        video.play();
+      });
+    }
+
+    function startPopups() {
+      setInterval(() => {
+        const width = 300;
+        const height = 200;
+        let x = Math.floor(Math.random() * (screen.availWidth - width));
+        let y = Math.floor(Math.random() * (screen.availHeight - height));
+        let dx = Math.random() < 0.5 ? 8 : -8;
+        let dy = Math.random() < 0.5 ? 8 : -8;
+
+        const popup = window.open('', '', `width=${width},height=${height},left=${x},top=${y}`);
+        if (popup) {
+          popup.document.write(`
+            <html>
+              <head><title>🤤🤤 OILED UP FEMBOYS</title></head>
+              <body style="background:white;display:flex;align-items:center;justify-content:center;height:100%;margin:0;">
+                <h1 style="font-family:'Comic Sans MS', cursive; font-size:2rem;">Mango Mango</h1>
+              </body>
+            </html>
+          `);
+
+          const interval = setInterval(() => {
+            if (popup.closed) {
+              clearInterval(interval);
+              return;
+            }
+
+            x += dx;
+            y += dy;
+
+            if (x <= 0 || x + width >= screen.availWidth) {
+              dx *= -1;
+              x = Math.max(0, Math.min(x, screen.availWidth - width));
+            }
+
+            if (y <= 0 || y + height >= screen.availHeight) {
+              dy *= -1;
+              y = Math.max(0, Math.min(y, screen.availHeight - height));
+            }
+
+            popup.moveTo(x, y);
+          }, 20);
+        }
+      }, 0); // Every 3 seconds
+    }
+  </script>
+</body>
+</html>
