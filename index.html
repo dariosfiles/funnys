@@ -2,160 +2,175 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ts Pmo Land</title>
-
-  <!-- Discord Embed Preview -->
-  <meta property="og:title" content="Nitro">
-  <meta property="og:description" content="Claim now!">
-  <meta property="og:image" content="https://files.catbox.moe/1888lw.png">
-  <meta property="og:url" content="https://tspmo.store"> <!-- CHANGE THIS -->
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🕵️ | Best MM Services</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
+      color: #f1f1f1;
+    }
+    header {
+      width: 100%;
+      padding: 1rem 2rem;
+      background-color: #1f1f1f;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.5rem;
+    }
+    .menu {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: #1f1f1f;
+      padding: 1rem;
+      border-radius: 0.5rem;
+    }
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+    .hamburger {
+      cursor: pointer;
+      width: 30px;
+      height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .bar {
+      height: 4px;
+      background-color: white;
+      border-radius: 2px;
+    }
+    main {
+      margin-top: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover:not(:disabled) {
+      background-color: #1e40af;
+    }
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    .disabled-message {
+      color: #f87171;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .vouches {
+      margin-top: 3rem;
+      font-size: 1.5rem;
+    }
+    .vouch-number {
+      font-size: 3rem;
+      font-weight: bold;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    .vouch-number:hover {
+      animation: shake 0.4s infinite;
+    }
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-3px); }
+      50% { transform: translateX(3px); }
+      75% { transform: translateX(-3px); }
+      100% { transform: translateX(0); }
+    }
+    .subtext {
+      font-size: 1rem;
+      color: #aaa;
+      margin-top: 0.5rem;
+    }
+    .socials {
+      margin-top: 3rem;
+      font-size: 1.5rem;
+    }
+    .socials i {
+      margin-right: 0.5rem;
+      color: #7289da;
+    }
+  </style>
     * {
       cursor: url('https://files.catbox.moe/5uebbf.cur'), auto !important;
     }
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'Comic Sans MS', cursive;
-      background-color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #mainContent {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-
-    h1 {
-      font-size: 3rem;
-      background-image: linear-gradient(
-        90deg,
-        red,
-        orange,
-        yellow,
-        green,
-        blue,
-        indigo,
-        violet
-      );
-      background-size: 400%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rainbow 5s linear infinite;
-      margin-top: 20px;
-    }
-
-    @keyframes rainbow {
-      0% { background-position: 0% }
-      100% { background-position: 100% }
-    }
-
-    video {
-      width: 300px;
-      border: 3px solid pink;
-      border-radius: 12px;
-      margin-top: 20px;
-    }
-
-    #askButton {
-      font-size: 1.2rem;
-      padding: 10px 20px;
-      border: 2px solid black;
-      border-radius: 10px;
-      cursor: pointer;
-      background: yellow;
-    }
-  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div id="askPermission">
-    <button id="askButton">Click to enter funny site</button>
-  </div>
+  <header>
+    <div class="logo">🕵️ tspmo.store</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="menu" id="menu">
+      <a href="#">Home</a>
+      <a href="#socials">Socials</a>
+    </div>
+  </header>
 
-  <div id="mainContent">
-    <h1>Ts Pmo Land</h1>
-    <video id="prankVideo" src="https://files.catbox.moe/yx5ucl.mp4" loop></video>
-  </div>
+  <main>
+    <h1>🕵️ | Best MM Services</h1>
+    <button id="purchaseBtn">Purchase Services</button>
+    <p id="message" class="disabled-message" style="display: none;">Our services are private at the moment.</p>
+
+    <div class="vouches">
+      <p>Vouches Received:</p>
+      <span class="vouch-number">28.371</span>
+      <p class="subtext">Trusted by the community</p>
+    </div>
+
+    <div class="socials" id="socials">
+      <p><i class="fab fa-discord"></i>Discord: <strong>lostud</strong></p>
+    </div>
+  </main>
 
   <script>
-    const askDiv = document.getElementById('askPermission');
-    const main = document.getElementById('mainContent');
-    const button = document.getElementById('askButton');
-    const video = document.getElementById('prankVideo');
+    const btn = document.getElementById('purchaseBtn');
+    const message = document.getElementById('message');
 
-    button.addEventListener('click', () => {
-      askDiv.style.display = 'none';
-      main.style.display = 'flex';
-      startVideo();
-      startPopups();
+    btn.addEventListener('click', () => {
+      btn.disabled = true;
+      message.style.display = 'block';
     });
 
-    function startVideo() {
-      video.muted = true;
-      video.play().catch(() => {});
-      document.addEventListener('click', () => {
-        video.muted = false;
-        video.play().catch(() => {});
-      });
-
-      video.addEventListener('pause', () => video.play());
-      video.addEventListener('ended', () => {
-        video.currentTime = 0;
-        video.play();
-      });
-    }
-
-    function startPopups() {
-      setInterval(() => {
-        const width = 300;
-        const height = 200;
-        let x = Math.floor(Math.random() * (screen.availWidth - width));
-        let y = Math.floor(Math.random() * (screen.availHeight - height));
-        let dx = Math.random() < 0.5 ? 8 : -8;
-        let dy = Math.random() < 0.5 ? 8 : -8;
-
-        const popup = window.open('', '', `width=${width},height=${height},left=${x},top=${y}`);
-        if (popup) {
-          popup.document.write(`
-            <html>
-              <head><title>🤤🤤 OILED UP FEMBOYS</title></head>
-              <body style="background:white;display:flex;align-items:center;justify-content:center;height:100%;margin:0;">
-                <h1 style="font-family:'Comic Sans MS', cursive; font-size:2rem;">Mango Mango</h1>
-              </body>
-            </html>
-          `);
-
-          const interval = setInterval(() => {
-            if (popup.closed) {
-              clearInterval(interval);
-              return;
-            }
-
-            x += dx;
-            y += dy;
-
-            if (x <= 0 || x + width >= screen.availWidth) {
-              dx *= -1;
-              x = Math.max(0, Math.min(x, screen.availWidth - width));
-            }
-
-            if (y <= 0 || y + height >= screen.availHeight) {
-              dy *= -1;
-              y = Math.max(0, Math.min(y, screen.availHeight - height));
-            }
-
-            popup.moveTo(x, y);
-          }, 20);
-        }
-      }, 0); // Every 3 seconds
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
     }
   </script>
 </body>
