@@ -1,11 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="refresh" content="0; url=https://tech.sellauth.com">
-  <title>Redirecting...</title>
+  <meta charset="UTF-8">
+  <title>mario64</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    #gameFrame {
+      display: none;
+      border: none;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
 </head>
 <body>
-  <h1>REDIRECTING YOU TO SHOP...</h1>
-  <p>If you are not redirected, <a href="https://tech.sellauth.com">click here</a>.</p>
+
+<script>
+  // Step 1: Initial alerts
+  alert("🎮 Recommended to use controller! Better experience.");
+  alert("Website hosted by internaleac on Discord.");
+
+  // Step 2: Ask for password
+  const password = prompt("");
+
+  // Step 3: Check password
+  if (password === "oreo") {
+    // Create iframe
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://probablykam.github.io/Mario64webgl/";
+    iframe.id = "gameFrame";
+    document.body.appendChild(iframe);
+    iframe.style.display = "block";
+
+    // Step 4: Listen for keypress (5 to fullscreen)
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "5") {
+        const elem = document.getElementById("gameFrame");
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        }
+      }
+    });
+  } else {
+    alert("Incorrect password.");
+  }
+</script>
+
 </body>
 </html>
