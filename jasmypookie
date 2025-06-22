@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>pookie website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      font-size: 3em;
+      margin: 0.2em 0;
+    }
+    .time {
+      font-size: 2em;
+      margin-bottom: 2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>swift</h1>
+  <div class="time" id="spain-time">Loading...</div>
+
+  <h1>jas</h1>
+  <div class="time" id="australia-time">Loading...</div>
+
+  <script>
+    function updateTimes() {
+      const spainTime = new Date().toLocaleTimeString("en-US", {
+        timeZone: "Europe/Madrid",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true
+      });
+
+      const ausTime = new Date().toLocaleTimeString("en-US", {
+        timeZone: "Australia/Sydney",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true
+      });
+
+      document.getElementById("spain-time").textContent = spainTime;
+      document.getElementById("australia-time").textContent = ausTime;
+    }
+
+    updateTimes();
+    setInterval(updateTimes, 1000);
+  </script>
+</body>
+</html>
